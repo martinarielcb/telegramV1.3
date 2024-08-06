@@ -20,7 +20,7 @@ You can also keep updated with the list of Vulnerabilities of each day.
 #### Download the Proyect
 
 ```bash
-git clone git@github.com:safernandez666/TelegramBot.git
+git clone git@github.com:edsimauricio/TelegramBot.git
 ```
 
 #### Build the Image
@@ -32,7 +32,9 @@ docker build -t bot .
 #### Run the Container
 
 ```bash
-docker run -e TOKEN_TELEGRAM="YOUR_TELEGRAM_TOKEN" -e TOKEN_VULDB="YOUR_VULDB_TOKEN" bot  
+docker run -e TOKEN_TELEGRAM="YOUR_TELEGRAM_TOKEN" -e TOKEN_VULDB="YOUR_VULDB_TOKEN" bot
+If only use IOCs funcion you need run this:
+docker run -e TOKEN_TELEGRAM="YOUR_TELEGRAM_TOKEN" bot
 ```
 
 Dialogue between Bot and the Operator, where you are informed of directions to parse and impact the consoles.
