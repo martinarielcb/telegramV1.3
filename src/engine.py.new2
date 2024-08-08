@@ -4,9 +4,9 @@ import re
 
 # Configura las credenciales y URL de la API
 url_base = 'https://api.xdr.trendmicro.com'
-url_path = '/v3.0/threatintel/suspiciousObjects'
+url_path = '/v3.0/response/suspiciousObjects'
 url_path_isolate = '/v3.0/response/endpoints/isolate'
-token = 'APIKEY'  # Sustituye con tu token real
+token = 'tu_token_aqui'  # Sustituye con tu token real
 
 headers = {
     'Authorization': 'Bearer ' + token,
