@@ -20,7 +20,7 @@ You can also keep updated with the list of Vulnerabilities of each day.
 #### Download the Proyect
 
 ```bash
-git clone git@github.com:edsimauricio/TelegramBot.git
+git clone git@github.com:Gig-Jag/TelegramBot.git
 ```
 
 #### Build the Image
