@@ -33,6 +33,45 @@ def update_ioc(update, context):
         update.message.reply_text(f'Se recibió el IoC, procederemos a aplicar los siguientes cambios. Hashes: {hashes}')
     return ConversationHandler.END
 
+def cargar_ioc(update, context):
+    logger.info('Comando /cargarioc recibido')
+    
+    # Verificar si se proporcionaron argumentos
+    if context.args:
+        # Unir todos los argumentos en un solo string y dividir por comas
+        ioc_data = ' '.join(context.args)
+        ioc_list = ioc_data.split(',')
+        
+        # Eliminar espacios en blanco alrededor de cada IP
+        ioc_list = [ioc.strip() for ioc in ioc_list]
+        
+        # Variables para almacenar resultados
+        direcciones_ip = []
+        hashes = []
+        
+        # Procesar cada IoC en la lista
+        for ioc in ioc_list:
+            ips = get_ips(ioc)
+            hs = get_hashes(ioc)
+            if ips:
+                direcciones_ip.extend(ips)
+            if hs:
+                hashes.extend(hs)
+        
+        # Responder al usuario con los resultados
+        if direcciones_ip:
+            logger.info(f'Direcciones IP procesadas: {direcciones_ip}')
+            update.message.reply_text(f'Se recibieron las siguientes IPs: {direcciones_ip}')
+        
+        if hashes:
+            logger.info(f'Hashes procesados: {hashes}')
+            update.message.reply_text(f'Se recibieron los siguientes hashes: {hashes}')
+        
+        if not direcciones_ip and not hashes:
+            update.message.reply_text('No se encontraron direcciones IP ni hashes en los datos proporcionados.')
+    else:
+        update.message.reply_text('Por favor, proporciona uno o más datos de IoC después del comando, por ejemplo: /cargarioc 192.168.2.3, 10.0.0.1')
+
 def endpoint(update, context):
     logger.info('Dialogo ENDPOINT')
     update.message.reply_text('Es necesario que me pases el nombre del equipo que deseas aislar.')
@@ -61,6 +100,7 @@ if __name__ == '__main__':
     # Handlers
     dp.add_handler(CommandHandler('start', start))
     dp.add_handler(CommandHandler('chiste', chiste))
+    dp.add_handler(CommandHandler('cargarioc', cargar_ioc))
     dp.add_handler(ConversationHandler(
         entry_points=[
             CommandHandler('ioc', ioc),
