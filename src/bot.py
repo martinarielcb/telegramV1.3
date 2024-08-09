@@ -3,6 +3,7 @@ from engine import get_chiste, get_ips, get_hashes, get_endpoints, isolate_endpo
 import logging, os
 
 # Variables para los estados en la conversación
+TEXTO_ENDPOINTS = 0
 INPUT_TEXT = 0
 
 # Funciones
@@ -35,7 +36,7 @@ def update_ioc(update, context):
 def endpoint(update, context):
     logger.info('Dialogo ENDPOINT')
     update.message.reply_text('Es necesario que me pases el nombre del equipo que deseas aislar.')
-    return INPUT_TEXT
+    return TEXTO_ENDPOINTS
 
 def isolate_endpoints_handler(update, context):
     logger.info('Se recibió el nombre del equipo para aislar')
@@ -67,7 +68,7 @@ if __name__ == '__main__':
         ],
         states={
             INPUT_TEXT: [MessageHandler(Filters.text & ~Filters.command, update_ioc)],
-            INPUT_TEXT: [MessageHandler(Filters.text & ~Filters.command, isolate_endpoints_handler)]
+            TEXTO_ENDPOINTS: [MessageHandler(Filters.text & ~Filters.command, isolate_endpoints_handler)]
         },
         fallbacks=[]
     ))
