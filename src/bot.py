@@ -191,7 +191,7 @@ if __name__ == '__main__':
             INPUT_TEXT: [MessageHandler(Filters.text & ~Filters.command, update_ioc)],
             TEXTO_ENDPOINTS: [MessageHandler(Filters.text & ~Filters.command, isolate_endpoints_handler)]
         },
-        fallbacks=[]
+        fallbacks=[fallbacks=[CommandHandler('cancel', cancel)],]
     ))
 
 #lineas que arrancan el bot
