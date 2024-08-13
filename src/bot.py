@@ -1,4 +1,5 @@
 from telegram.ext import Updater, CommandHandler, ConversationHandler, MessageHandler, Filters, CallbackContext
+from telegram import Update
 from engine import get_chiste, get_ips, get_hashes, get_endpoints, isolate_endpoints, procesar_sender, procesar_domain, procesar_url, procesar_ip, procesar_sha1, procesar_sha256
 import logging, os
 
