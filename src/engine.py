@@ -92,7 +92,7 @@ def procesar_sha1(hashes: list) -> str:
         else:
             return f"Error al cargar hashes SHA1. Código de estado: {r.status_code}"
     except Exception as e:
-        return f"Error al conectar con la API: {e}"´
+        return f"Error al conectar con la API: {e}"
     
 def procesar_ip(ips: list) -> str:
     # Construye el cuerpo de la solicitud
