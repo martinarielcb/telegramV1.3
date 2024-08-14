@@ -190,7 +190,7 @@ if __name__ == '__main__':
         states={
             INPUT_TEXT: [MessageHandler(Filters.text & ~Filters.command, update_ioc)],
         },
-        fallbacks=[CommandHandler('cancel', cancel)])
+        fallbacks=[CommandHandler('cancel', cancel)]))
     dp.add_handler(ConversationHandler(
         entry_points=[
             CommandHandler('endpoint', endpoint)
